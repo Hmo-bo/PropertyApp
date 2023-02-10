@@ -1,0 +1,40 @@
+
+- Use Cases
+suggest Price
+decrease the Price
+schedule a tour 
+share properties
+
+
+- Property Credentials
+*surface
+*paper state
+*mounthly payment posibility
+*about this property
+*number of rooms
+*number of bathrooms
+*Build Year (optional)
+Avalability time to take tour
+*map credetials
+*number of save by clients
+*images
+
+
+- Screens
+Login/Registration
+Home Page contains properties to (Buy/Rent)
+Property detailles
+Add property to sell/rent
+properties in map
+My properties
+My profile
+Edit property
+favorit properties
+recently Viewed properties
+
+
+- Data Base Tables
+properties(surface/about/nbr rooms/nbr bathrooms/logitude/latitude/nbr saves/oldPrice/newPrice/year of build/timeToTakeTour(possible be table))
+users (email/phone/firstName/LastName)
+favorites (userId/propertyId)
+Recently Viewed (propertyId/userId)
