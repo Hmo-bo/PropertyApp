@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -33,7 +35,7 @@ class _addPropertyState extends State<addProperty> {
   void selectMyProperties() async {
     final List<XFile> images = await imagePicker.pickMultiImage();
     setState(() {
-      if (images!.isNotEmpty) {
+      if (images.isNotEmpty) {
         imagesList!.addAll(images);
       }
     });
@@ -42,7 +44,7 @@ class _addPropertyState extends State<addProperty> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: SizedBox(
-        height: 50,width: 125,
+        height: 50,width: 150,
         child: FloatingActionButton(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10)
@@ -54,7 +56,7 @@ class _addPropertyState extends State<addProperty> {
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Row(
               children: [
-                texts(text: 'Next',fw: FontWeight.bold,size: 22,clr: Colors.white),
+                arabtexts(text: 'التالي',fw: FontWeight.bold,size: 22,clr: Colors.white),
                 Expanded(child: SizedBox()),
                 Icon(MdiIcons.chevronDoubleRight,size: 40,)
 
@@ -64,7 +66,7 @@ class _addPropertyState extends State<addProperty> {
         ),
       ),
       appBar: AppBar(
-        title: texts(text: 'Add Property'),
+        title:arabtexts(text: 'إضافة ملكية',clr: Colors.white),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -132,57 +134,82 @@ class _addPropertyState extends State<addProperty> {
                     children: [
                       TextFormField(
                         validator: (value) =>
-                        value!.isEmpty ? 'This Field is Required' : null,
-                        decoration: const InputDecoration(
-                          icon: Icon(MdiIcons.homeCityOutline),
-                          labelText: 'District Name',
+                        value!.isEmpty ? 'يجب إدخال المساحة' : null,
+                        controller: _surfaceController,
+                        textAlign: TextAlign.end,
+                        keyboardType:  TextInputType.number,
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(MdiIcons.arrowTopRightBottomLeft),
+                          // labelText: ,
+                            label:Align(
+                                alignment: Alignment.centerRight,
+                                child: arabtexts(text: 'مساحة الممتلكة',size: 15)),
+                            alignLabelWithHint : true
+                        ),
+                      ),
+                      TextFormField(
+                        validator: (value) =>
+                        value!.isEmpty ? 'يجب إدخال عدد الطوابق' : null,
+                        controller: _floorsController,
+                        keyboardType:  TextInputType.number,
+                        textAlign: TextAlign.end,
+                        decoration: InputDecoration(
+                            prefixIcon: Icon(MdiIcons.layersTripleOutline),
+                          // labelText: ,
+                            label:Align(
+                                alignment: Alignment.centerRight,
+                                child: arabtexts(text:'عدد الطوابق',size: 15)),
+                            alignLabelWithHint : true
+                        ),
+                      ),
+                      TextFormField(
+                        validator: (value) =>
+                        value!.isEmpty ?  'يجب إدخال عدد الغرف' : null,
+                        controller: _roomsController,
+                        textAlign: TextAlign.end,
+                        decoration:  InputDecoration(
+                            prefixIcon: Icon(MdiIcons.bed),
+                            label:Align(
+                                alignment: Alignment.centerRight,
+                                child: arabtexts(text: 'عدد الغرف',size: 15)),
+                            alignLabelWithHint : true
+                          // labelText: 'Number of Rooms',
+                        ),
+                        keyboardType:  TextInputType.number,
+                      ),
+                      TextFormField(
+                        validator: (value) =>
+                        value!.isEmpty ? 'يجب إدخال عدد الحمامات' : null,
+                        controller: _toiletsController,
+                        textAlign: TextAlign.end,
+                        decoration: InputDecoration(
+                            prefixIcon: Icon(MdiIcons.bathtub),
+                          // labelText: 'Number of Toilets',
+                            label:Align(
+                                alignment: Alignment.centerRight,
+                                child: arabtexts(text:'عدد الحمامات',size: 15)),
+                            alignLabelWithHint : true
+                        ),
+                        keyboardType:  TextInputType.number,
+                      ),
+                      TextFormField(
+                        textAlign: TextAlign.end,
+                        validator: (value) =>
+                        value!.isEmpty ? 'يجب إدخال نوع العقد' : null,
+                        decoration: InputDecoration(
+                            prefixIcon: Icon(MdiIcons.homeCityOutline),
+                          label:Align(
+                            alignment: Alignment.centerRight,
+                            child: arabtexts(text:  'نوع العقد',size: 15)),
+                          alignLabelWithHint : true
                         ),
                         keyboardType: TextInputType.name,
                         controller: _districtController,
                       ),
-                      TextFormField(
-                        validator: (value) =>
-                        value!.isEmpty ? 'This Field is Required' : null,
-                        controller: _surfaceController,
-                        keyboardType:  TextInputType.number,
-                        decoration: const InputDecoration(
-                          icon: Icon(MdiIcons.arrowTopRightBottomLeft),
-                          labelText: 'Property Surfaces',
-                        ),
-                      ),
-                      TextFormField(
-                        validator: (value) =>
-                        value!.isEmpty ? 'This Field is Required' : null,
-                        controller: _floorsController,
-                        keyboardType:  TextInputType.number,
-                        decoration: const InputDecoration(
-                          icon: Icon(MdiIcons.layersTripleOutline),
-                          labelText: 'Number of Floors',
-                        ),
-                      ),
-                      TextFormField(
-                        validator: (value) =>
-                        value!.isEmpty ? 'This Field is Required' : null,
-                        controller: _roomsController,
-                        decoration: const InputDecoration(
-                          icon: Icon(MdiIcons.bed),
-                          labelText: 'Number of Rooms',
-                        ),
-                        keyboardType:  TextInputType.number,
-                      ),
-                      TextFormField(
-                        validator: (value) =>
-                        value!.isEmpty ? 'This Field is Required' : null,
-                        controller: _toiletsController,
-                        decoration: const InputDecoration(
-                          icon: Icon(MdiIcons.bathtub),
-                          labelText: 'Number of Toilets',
-                        ),
-                        keyboardType:  TextInputType.number,
-                      ),
                     ],
               )),
             ),
+            SizedBox(height: 60,)
           ],
         ),
       ),

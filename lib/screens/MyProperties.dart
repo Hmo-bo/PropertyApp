@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../Models/PropertyForSale.dart';
+import '../tool.dart';
 import 'recentlyViewedTile.dart';
 class MyProperties extends StatelessWidget {
   const MyProperties({Key? key}) : super(key: key);
@@ -18,7 +19,11 @@ class MyProperties extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          SliverAppBar(),
+          SliverAppBar(
+            title: Align(
+              alignment: AlignmentDirectional.centerEnd,
+              child: arabtexts(text: 'ممتلكاتي')
+          ),),
           SliverList(delegate: SliverChildBuilderDelegate(
             childCount: MyProperties.length,
             (context,index){

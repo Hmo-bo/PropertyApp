@@ -20,12 +20,19 @@ class _favoriteTileState extends State<favoriteTile> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
         height: 125,
         width: MediaQuery.of(context).size.width * .85,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(25),
-          color: Colors.blueGrey[200],
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(.3),
+              offset: Offset(2, 2),
+              blurRadius: 1
+            )
+          ]
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -69,41 +76,19 @@ class _favoriteTileState extends State<favoriteTile> {
                 ),
               ),
             ),
-            Stack(children: [
-              Container(
-                width: 120,
-                height: 125,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(widget.image[0]),
-                      fit: BoxFit.cover,
-                    ),
-                    borderRadius: const BorderRadius.only(
-                      topRight: Radius.circular(20),
-                      bottomRight: Radius.circular(20),
-                    )),
-              ),
-             /* Positioned(
-                  top: 0,
-                  right: 0,
-                  child: Container(
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.only(
-                            topRight: Radius.circular(20),
-                            bottomLeft: Radius.circular(5)),
-                        color: Colors.blueGrey[200]),
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.delete,
-                        size: 30,
-                        color: Colors.red,
-                      ),
-                    ),
-                  )),*/
-            ]),
+            Container(
+              width: 120,
+              height: 125,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(widget.image[0]),
+                    fit: BoxFit.cover,
+                  ),
+                  borderRadius: const BorderRadius.only(
+                    topRight: Radius.circular(20),
+                    bottomRight: Radius.circular(20),
+                  )),
+            ),
           ],
         ),
     );

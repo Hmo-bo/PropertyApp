@@ -24,7 +24,7 @@ class _PropertyTileState extends State<PropertyTile> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      height: 180,
+      height: 200,
       width: 300,
       decoration: BoxDecoration(
         boxShadow: [
@@ -34,95 +34,107 @@ class _PropertyTileState extends State<PropertyTile> {
               blurRadius: 2)
         ],
         borderRadius: BorderRadius.circular(20),
-        color: Colors.blueGrey[100],
+        // border: Border.all(width: 2,color: Colors.blueGrey,style: BorderStyle.solid)
+        color: Colors.white,
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                texts(
-                    text: widget.property.district,
-                    fw: FontWeight.bold,
-                    size: 25),
-                SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    texts(text: widget.property.Price.toString() + ' \$'),
-                    texts(text: widget.property.surface.toString() + ' m²'),
-                  ],
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Container(
-                      child: Row(
-                        children: [
-                          Icon(Icons.bathtub_rounded),
-                          texts(text: ' 2')
-                        ],
-                      ),
-                    ),
-                    Container(
-                      child: Row(
-                        children: [
-                          Icon(MdiIcons.bed),
-                          texts(text:' '+widget.property.Rooms.toString())
-                        ],
-                      ),
-                    ),
-                    Container(
-                      child: Row(
-                        children: [
-                          Icon(MdiIcons.layersTripleOutline),
-                          texts(text:' '+ widget.property.floors.toString())
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.person),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    texts(text: widget.property.Publisher),
-                  ],
-                ),
-              ],
-            ),
-          ),
           Container(
             height: 250,
             width: 150,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(20),
-                    topRight: Radius.circular(20)),
-                boxShadow: [
+                borderRadius: BorderRadius./*circular(20),*/only(topLeft: Radius.circular(20),bottomLeft: Radius.circular(20)),
+                // bottomRight: Radius.circular(20),
+                // topRight: Radius.circular(20)),
+                /*boxShadow: [
                   BoxShadow(
                       color: Colors.black.withOpacity(.4),
                       offset: Offset(2, 2),
                       blurRadius: 2)
-                ],
+                ],*/
                 image: DecorationImage(
                   image: AssetImage(widget.property.Images[0]),
                   fit: BoxFit.cover,
                 )),
           ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 10,top: 10),
+                  child: texts(
+                      text: widget.property.district,
+                      fw: FontWeight.bold,
+                      size: 22),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      texts(text: widget.property.Price.toString() + ' \$',size: 18),
+                      SizedBox(width: 15,),
+                      texts(text: widget.property.surface.toString() + ' m²',size: 18),
+                    ],
+                  ),
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Container(
+                        child: Row(
+                          children: [
+                            Icon(Icons.bathtub_rounded),
+                            texts(text: ' 2')
+                          ],
+                        ),
+                      ),
+                      SizedBox(width: 15,),
+                      Container(
+                        child: Row(
+                          children: [
+                            Icon(MdiIcons.bed),
+                            texts(text:' '+widget.property.Rooms.toString())
+                          ],
+                        ),
+                      ),
+                      SizedBox(width: 15,),
+                      Container(
+                        child: Row(
+                          children: [
+                            Icon(MdiIcons.layersTripleOutline),
+                            texts(text:' '+ widget.property.floors.toString()),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                const SizedBox(height: 5,),
+                Padding(
+                  padding: const EdgeInsets.only(bottom:10,left: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(Icons.person),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      texts(text: widget.property.Publisher),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+
         ],
       ),
     );

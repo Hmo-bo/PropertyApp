@@ -18,6 +18,7 @@ class _PropertiesForSaleState extends State<PropertiesForSale> {
         [
           'lib/images/beige.jpg',
           'lib/images/green.jpg',
+          'lib/images/bgd.jpg'
         ],
         'Nouvelle Ville',
         'Hammou',

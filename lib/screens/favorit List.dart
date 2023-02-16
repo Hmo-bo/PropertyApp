@@ -38,20 +38,12 @@ class _favorit_ListState extends State<favorit_List> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueGrey[100],
+        backgroundColor: Color(0xfff1f5f9),
       appBar: AppBar(
         backgroundColor: Colors.blueGrey[600],
-        title: texts(text: 'Favorites List', clr: Colors.white, size: 25),
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            Get.back();
-          },
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Colors.black,
-          ),
-        ),
+        title: Align(
+            alignment: Alignment.centerRight,
+            child: arabtexts(text: 'قائمة المفضلات', clr: Colors.white, size: 25)),
       ),
       body: CustomScrollView(slivers: [
         SliverList(
@@ -67,26 +59,38 @@ class _favorit_ListState extends State<favorit_List> {
                           builder: (BuildContext context) {
                             return AlertDialog(
                               backgroundColor: Colors.blueGrey,
-                              title: texts(
-                                  text: 'Delete From Favorites?',
-                                  clr: Colors.white),
+                              title:Align(
+                                alignment: Alignment.centerRight,
+                                child: arabtexts(
+                                    text: 'تأكيد الحذف',
+                                    clr: Colors.white),
+                              ),
+
                               actions: [
-                                MaterialButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      favorites.removeAt(index);
-                                    });
-                                    Navigator.pop(context);
-                                  },
-                                  child:
-                                      texts(text: 'Confirm', clr: Colors.white),
-                                ),
-                                MaterialButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: texts(text: 'Cancel', clr: Colors.white),
-                                ),
+                                Align(
+                                  child: Row(
+                                    children: [
+                                      MaterialButton(
+                                        onPressed: () {
+                                          setState(() {
+                                            favorites.removeAt(index);
+                                          });
+                                          Navigator.pop(context);
+                                        },
+                                        child:
+                                        arabtexts(text: 'تأكيد', clr: Colors.white),
+                                      ),
+                                      MaterialButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: arabtexts(text: 'إلغاء', clr: Colors.white),
+                                      ),
+                                    ],
+                                  ),
+                                  alignment: Alignment.centerLeft,
+                                )
+
                               ],
                             );
                           });
@@ -118,7 +122,7 @@ class _favorit_ListState extends State<favorit_List> {
                             Icons.delete,
                             color: Colors.red,
                           )),
-                      texts(text: 'Remove from Favorites', clr: Colors.blueGrey[600])
+                      arabtexts(text: 'حذف من القائمة', clr: Colors.blueGrey[600],fw: FontWeight.bold)
                     ],
                   ),
                   key: ObjectKey(item),

@@ -26,7 +26,8 @@ class _recentViewedState extends State<recentViewed> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blueGrey[600],
-        title: texts(text: 'Recent Viewed',clr: Colors.white,size: 25),
+        title: Align(
+        alignment: AlignmentDirectional.centerEnd,child: arabtexts(text: 'تمت مشاهدته مؤخرا',clr: Colors.white,size: 25)),
       ),
       body: CustomScrollView(
         slivers: [

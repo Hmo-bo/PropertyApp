@@ -68,9 +68,11 @@ class _ProfileState extends State<Profile> {
                     child: Column(
                       children: [
                               ListTile(
-                                  trailing: const Icon(Icons.arrow_forward_ios_outlined),
-                                  title: texts(text: 'Recently Viewed'),
-                                  leading: const Icon(Icons.history,size: 30,),
+                                  leading: const Icon(Icons.arrow_back_ios_outlined),
+                                  title: Align(
+                                      alignment: AlignmentDirectional.centerEnd,
+                                      child: arabtexts(text: "تمت مشاهدته مؤخرا")),
+                                  trailing: const Icon(Icons.history,size: 30,),
                                   onTap: () {
                                     Get.to(() => const recentViewed());
                                   }),
@@ -80,9 +82,13 @@ class _ProfileState extends State<Profile> {
                                 height: 2,
                               ),
                               ListTile(
-                                trailing: const Icon(Icons.arrow_forward_ios_outlined),
-                                title: texts(text: 'My Properties'),
-                                leading: const Icon(MdiIcons.homeCityOutline,size: 30,),
+                                leading: const Icon(Icons.arrow_back_ios_outlined),
+                                title: Align(
+                                    alignment: AlignmentDirectional.centerEnd,
+                                    child: Align(
+                                        alignment: AlignmentDirectional.centerEnd,
+                                        child: arabtexts(text: 'ممتلكاتي'))),
+                                trailing: const Icon(MdiIcons.homeCityOutline,size: 30,),
                                 onTap: ()=>Get.to(()=>MyProperties())
                               ),
                               const Divider(
@@ -91,9 +97,11 @@ class _ProfileState extends State<Profile> {
                                 height: 2,
                               ),
                               ListTile(
-                                  trailing: const Icon(Icons.arrow_forward_ios_outlined),
-                                  title: texts(text: 'Add Property'),
-                                  leading: const Icon(MdiIcons.homePlusOutline,size: 30,),
+                                  leading: const Icon(Icons.arrow_back_ios_outlined),
+                                  title: Align(
+                                      alignment: AlignmentDirectional.centerEnd,
+                                      child: arabtexts(text: 'إضافة ممتلك')),
+                                  trailing: const Icon(MdiIcons.homePlusOutline,size: 30,),
                                   onTap: ()=>Get.to(()=>addProperty())
                               ),
                               const Divider(
@@ -102,9 +110,11 @@ class _ProfileState extends State<Profile> {
                                 height: 2,
                               ),
                               ListTile(
-                                trailing: const Icon(Icons.arrow_forward_ios_outlined),
-                                title: texts(text: 'My Favorites'),
-                                leading: const Icon(Icons.favorite,size: 30,),
+                                leading: const Icon(Icons.arrow_back_ios_outlined),
+                                title: Align(
+                                    alignment: AlignmentDirectional.centerEnd,
+                                    child: arabtexts(text: "قائمة المفضلات")),
+                                trailing: const Icon(Icons.favorite,size: 30,),
                                   onTap:()=> Get.to(()=>const favorit_List())
                               ),
                               const Divider(
@@ -113,9 +123,11 @@ class _ProfileState extends State<Profile> {
                                 height: 2,
                               ),
                               ListTile(
-                                trailing: const Icon(Icons.arrow_forward_ios_outlined),
-                                title: texts(text: 'Settings'),
-                                leading: const Icon(Icons.settings,size: 30,),
+                                leading: const Icon(Icons.arrow_back_ios_outlined),
+                                title: Align(
+                                    alignment: AlignmentDirectional.centerEnd,
+                                    child: arabtexts(text: 'الإعدادات')),
+                                trailing: const Icon(Icons.settings,size: 30,),
                               ),
                       ],
                     ),
